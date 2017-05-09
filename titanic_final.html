@@ -39,10 +39,10 @@
         Dimple.js Chart construction code
       */
 
-          var myChart = new dimple.chart(svg, data);
+          /* var myChart = new dimple.chart(svg, data);
           var x = myChart.addCategoryAxis("x", "Sex");
           x.addOrderRule(["Female", "Male"])
-          myChart.addMeasureAxis("y", "Survived");
+          myChart.addMeasureAxis("y", "Count");
           var mySeries = myChart.addSeries("Survived", dimple.plot.bar);
 
           
@@ -51,9 +51,17 @@
           myChart.addSeries(null, dimple.plot.line);
           myChart.addSeries('stage', dimple.plot.bar);*/
           
+          var myChart = new dimple.chart(svg, data);
+          var x = myChart.addCategoryAxis("x", "Sex");
+          x.addOrderRule(["Female", "Male"])
+
+          myChart.addMeasureAxis("y", "Survived");
+          var mySeries = myChart.addSeries("Survived", dimple.plot.bar);
+          mySeries.addOrderRule(["Perished","Survived"])
+
           myChart.draw();
         };
-      </script>
+    </script>
   </head>
 <body>
   <script type="text/javascript">
