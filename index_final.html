@@ -14,6 +14,11 @@
 
   <script type="text/javascript">
     function draw(data) {
+
+      /* Create new variable */
+      data.forEach(function(d){
+        d.Count = 1;
+      })
       
     /*
         D3.js setup code
@@ -26,7 +31,7 @@
 
       d3.select('body')
       .append('h2')
-      .text("Titanic Survival Rate: Favored First Class Passengers and Women");
+      .text("Titanic Survival Rate: Favored Women");
 
       var svg = d3.select("body")
       .append("svg")
@@ -40,23 +45,21 @@
       */
 
       var myChart = new dimple.chart(svg, data);
-      var x = myChart.addCategoryAxis("x", ["Pclass", "Sex"]);
-      x.title = "Cabin Class/Gender"
+      var x = myChart.addCategoryAxis("x", "Sex");
+      /* var x = myChart.addCategoryAxis("x", ["Sex", "Pclass"]);
+      x.addOrderRule("Pclass", false);*/
+      x.title = "Gender"
 
-      var y = myChart.addMeasureAxis("y", "Count");
-      y.title = "Passenger Count"
+      var y = myChart.addPctAxis("y", "Count");
+      y.title = "Percentage"
       
-      myChart.addSeries("Sex", dimple.plot.bar);
+      /* myChart.addSeries("Sex", dimple.plot.bar);*/
       var mySeries = myChart.addSeries("Survived", dimple.plot.bar);
 
       /* Add legend */
       myChart.addLegend(200, 10, 380, 20, "right");
 
       myChart.draw();
-
-      /* Add label */
-      myChart.assignColor("Survived", "white", "red", 0.5);
-      myChart.assignColor("Sex", "blue", "green", 0.5);
 
     };
 
