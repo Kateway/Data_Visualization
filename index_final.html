@@ -55,23 +55,9 @@
       myChart.draw();
 
       /* Add label */
-      var male_rects = svg.selectAll(".dimple-male");
+      myChart.assignColor("Survived", "white", "red", 0.5);
+      myChart.assignColor("Sex", "blue", "green", 0.5);
 
-      male_rects.append("text")
-      .attr("x", parseFloat(rec.attr("x")) + parseFloat(rec.attr("width") / 2))
-      .attr("y", parseFloat(rec.attr("y")) - 5)
-      .style("text-anchor", "middle")
-      .style("font-family", "sans-serif")
-      .style("font-size", "12px")
-      .text('Male');
-
-      /* svg.selectAll(".dimple-male")
-        .attr("class", "dimple-male")
-        .text("Male");
-
-      svg.selectAll(".dimple-female")
-        .attr("class", "dimple-male")
-        .text("Female"); */
     };
 
   </script>
