@@ -42,19 +42,27 @@
       var myChart = new dimple.chart(svg, data);
       var x = myChart.addCategoryAxis("x", ["Pclass", "Sex"]);
       x.title = "Cabin Class/Gender"
+      
+      /* Add label */
+      svg.selectAll(".dimple-male")
+        .attr("class", "dimple-male")
+        .text("Male");
+
+      svg.selectAll(".dimple-female")
+        .attr("class", "dimple-male")
+        .text("Female");
 
       var y = myChart.addMeasureAxis("y", "Count");
       y.title = "Passenger Count"
       var mySeries = myChart.addSeries("Survived", dimple.plot.bar);
 
+
       /* Add legend */
       myChart.addLegend(200, 10, 380, 20, "right");
 
-      /* Add label to each bar */
-
-
       myChart.draw();
     };
+
   </script>
 </head>
 
