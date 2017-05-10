@@ -42,25 +42,35 @@
       var myChart = new dimple.chart(svg, data);
       var x = myChart.addCategoryAxis("x", ["Pclass", "Sex"]);
       x.title = "Cabin Class/Gender"
-      
-      /* Add label */
-      svg.selectAll(".dimple-male")
-        .attr("class", "dimple-male")
-        .text("Male");
-
-      svg.selectAll(".dimple-female")
-        .attr("class", "dimple-male")
-        .text("Female");
 
       var y = myChart.addMeasureAxis("y", "Count");
       y.title = "Passenger Count"
+      myChart.addSeries("Sex", dimple.plot.bar);
       var mySeries = myChart.addSeries("Survived", dimple.plot.bar);
-
 
       /* Add legend */
       myChart.addLegend(200, 10, 380, 20, "right");
 
       myChart.draw();
+
+      /* Add label */
+      var male_rects = svg.selectAll(".dimple-male");
+
+      male_rects.append("text")
+      .attr("x", parseFloat(rec.attr("x")) + parseFloat(rec.attr("width") / 2))
+      .attr("y", parseFloat(rec.attr("y")) - 5)
+      .style("text-anchor", "middle")
+      .style("font-family", "sans-serif")
+      .style("font-size", "12px")
+      .text('Male');
+
+      /* svg.selectAll(".dimple-male")
+        .attr("class", "dimple-male")
+        .text("Male");
+
+      svg.selectAll(".dimple-female")
+        .attr("class", "dimple-male")
+        .text("Female"); */
     };
 
   </script>
